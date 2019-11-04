@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "prop-types": "^15.7.2",
+    "ra-data-hasura": "0.0.7",
+    "ra-data-json-server": "^2.9.8",
     "react": "^16.11.0",
+    "react-admin": "^2.9.8",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0"
   },
