@@ -1,16 +1,31 @@
 import React from 'react';
-import { Admin, Resource } from 'react-admin';
-import { PostList, PostEdit, PostCreate } from './posts';
+import { Admin, Resource, ListGuesser } from 'react-admin';
+import { TodoList, TodoEdit, TodoCreate } from './todos';
 import { UserList } from './users';
-import jsonServerProvider from 'ra-data-json-server';
+// import jsonServerProvider from 'ra-data-json-server';
+import hasuraDataProvider from 'ra-data-hasura';
+// import hasuraDataProvider from 'ra-data-hasura-graphql';
 import PostIcon from '@material-ui/icons/Book';
 import UserIcon from '@material-ui/icons/Group';
 
-const dataProvider = jsonServerProvider('http://jsonplaceholder.typicode.com');
+
+const headers = {'content-type': 'application/json', 'authorization': 'bearer <token>'};
 const App = () => (
-  <Admin dataProvider={dataProvider}>
-    <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon}/>
-    <Resource name="users" list={UserList} icon={UserIcon}/>
+  <Admin
+    dataProvider={hasuraDataProvider('https://low-code-api.herokuapp.com', headers)}
+    // authProvider={authProvider}
+    // dashboard={Dashboard}
+  >
+    <Resource
+      name="todos"
+      icon={PostIcon}
+      list={TodoList}
+      edit={TodoEdit}
+      create={TodoCreate}
+      // show={TodoShow}
+    />
+    <Resource name="users" icon={UserIcon} list={UserList} />
+    {/* <Resource name="todos" list={ListGuesser} /> */}
   </Admin>
 );
 
