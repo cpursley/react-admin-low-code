@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Admin, Resource } from 'react-admin';
 import { TodoList, TodoEdit, TodoCreate } from './todos';
-import { UserList } from './users';
+import { UserList, UserShow } from './users';
 import buildHasuraProvider from 'ra-data-hasura-graphql';
 import PostIcon from '@material-ui/icons/Book';
 import UserIcon from '@material-ui/icons/Group';
@@ -25,8 +25,12 @@ const App = async () => {
                 edit={TodoEdit}
                 create={TodoCreate}
             />
-            <Resource name="users" icon={UserIcon} list={UserList} />
-            {/* <Resource name="todos" list={ListGuesser} /> */}
+            <Resource
+                name="users"
+                icon={UserIcon}
+                list={UserList}
+                show={UserShow}
+            />
         </Admin>
     );
 };

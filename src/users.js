@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Filter, Datagrid, TextInput, TextField, DateField} from 'react-admin';
+import { List, Filter, Datagrid, TextInput, TextField, DateField, Show, SimpleShowLayout} from 'react-admin';
 
 const UserFilter = (props) => (
     <Filter {...props}>
@@ -9,11 +9,20 @@ const UserFilter = (props) => (
 
 export const UserList = props => (
     <List filters={<UserFilter />} {...props}>
-
-        <Datagrid rowClick="edit">
+        <Datagrid rowClick="show">
             <TextField source="id" />
             <TextField source="name" />
-            <DateField source="created_at" />
+            <DateField source="created_at" label="Created At" />
         </Datagrid>
     </List>
+);
+
+export const UserShow = (props) => (
+    <Show {...props}>
+        <SimpleShowLayout>
+            <TextField source="id" />
+            <TextField source="name" />
+            <DateField label="Created At" source="created_at" />
+        </SimpleShowLayout>
+    </Show>
 );
