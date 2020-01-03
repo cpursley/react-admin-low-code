@@ -5,10 +5,10 @@
   "dependencies": {
     "prop-types": "^15.7.2",
     "ra-data-hasura-graphql": "^0.1.5",
-    "react": "^16.11.0",
-    "react-admin": "^2.9.8",
-    "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
+    "react": "^16.12.0",
+    "react-admin": "^2.9.9",
+    "react-dom": "^16.12.0",
+    "react-scripts": "^3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
