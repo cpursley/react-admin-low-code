@@ -1,5 +1,5 @@
 import React from 'react';
-import { Filter, List, Edit, Create, Datagrid, TextField, ReferenceField, BooleanField, DateField, ReferenceInput, BooleanInput, SelectInput, DateInput, DisabledInput, SimpleForm, TextInput} from 'react-admin';
+import { Filter, List, Edit, Create, Datagrid, TextField, ReferenceField, BooleanField, DateField, ReferenceInput, BooleanInput, SelectInput, DateInput, SimpleForm, TextInput} from 'react-admin';
 
 const TodoFilter = (props) => (
     <Filter {...props}>
@@ -32,7 +32,7 @@ const TodoTitle = ({ record }) => {
 export const TodoEdit = props => (
     <Edit title={<TodoTitle />} {...props}>
         <SimpleForm>
-            <DisabledInput source="id" label="Todo Id" />
+            <TextInput disabled source="id" label="Todo Id" />
             <ReferenceInput label="User" source="user_id" reference="users" allowEmpty>
                 <SelectInput optionText="name" />
             </ReferenceInput>
