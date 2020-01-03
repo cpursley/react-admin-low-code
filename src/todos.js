@@ -3,6 +3,7 @@ import { Filter, List, Edit, Create, Datagrid, TextField, ReferenceField, Boolea
 
 const TodoFilter = (props) => (
     <Filter {...props}>
+        <TextInput label="Search by Title" source="title" alwaysOn />
         <ReferenceInput label="User" source="user_id" reference="users" allowEmpty>
             <SelectInput optionText="name" />
         </ReferenceInput>
