@@ -17,8 +17,12 @@ export const UserList = props => (
     </List>
 );
 
+const UserTitle = ({ record }) => {
+    return <span>User: {record ? `${record.name}` : ''}</span>;
+};
+
 export const UserShow = (props) => (
-    <Show {...props}>
+    <Show title={<UserTitle />} {...props}>
         <SimpleShowLayout>
             <TextField source="id" />
             <TextField source="name" />
