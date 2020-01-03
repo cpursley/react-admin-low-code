@@ -1,5 +1,5 @@
 import React from 'react';
-import { Filter, List, Edit, Create, Datagrid, TextField, ReferenceField, BooleanField, DateField, ReferenceInput, BooleanInput, SelectInput, DateInput, DisabledInput, SimpleForm, TextInput, LongTextInput} from 'react-admin';
+import { Filter, List, Edit, Create, Datagrid, TextField, ReferenceField, BooleanField, DateField, ReferenceInput, BooleanInput, SelectInput, DateInput, DisabledInput, SimpleForm, TextInput} from 'react-admin';
 
 const TodoFilter = (props) => (
     <Filter {...props}>
