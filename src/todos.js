@@ -1,5 +1,23 @@
 import React from 'react';
-import { Filter, List, Edit, Create, Datagrid, TextField, ReferenceField, BooleanField, DateField, ReferenceInput, BooleanInput, SelectInput, DateInput, SimpleForm, TextInput} from 'react-admin';
+import {
+    Filter,
+    List,
+    Edit,
+    Create,
+    Datagrid,
+    TextField,
+    ReferenceField,
+    BooleanField,
+    DateField,
+    ReferenceInput,
+    BooleanInput,
+    SelectInput,
+    DateInput,
+    SimpleForm,
+    TextInput,
+    TopToolbar,
+    ListButton
+} from 'react-admin';
 
 const TodoFilter = (props) => (
     <Filter {...props}>
@@ -13,7 +31,7 @@ const TodoFilter = (props) => (
 );
 
 export const TodoList = props => (
-    <List filters={<TodoFilter />} {...props}>
+    <List filters={<TodoFilter />} bulkActionButtons={false} {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" label="Todo Id" />
             <TextField source="title" />
@@ -30,8 +48,14 @@ const TodoTitle = ({ record }) => {
     return <span>Todo: {record ? `${record.title}` : ''}</span>;
 };
 
+const TodoEditActions = ({ basePath, data }) => (
+    <TopToolbar>
+        <ListButton basePath={basePath} record={data} label="Back" />
+    </TopToolbar>
+);
+
 export const TodoEdit = props => (
-    <Edit title={<TodoTitle />} {...props}>
+    <Edit title={<TodoTitle />} actions={<TodoEditActions />} {...props}>
         <SimpleForm>
             <TextInput disabled source="id" label="Todo Id" />
             <ReferenceInput label="User" source="user_id" reference="users" allowEmpty>
