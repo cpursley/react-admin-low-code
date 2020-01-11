@@ -12,7 +12,6 @@ import {
     ReferenceInput,
     BooleanInput,
     SelectInput,
-    DateInput,
     SimpleForm,
     TextInput,
     TopToolbar,
@@ -26,7 +25,6 @@ const TodoFilter = (props) => (
             <SelectInput optionText="name" />
         </ReferenceInput>
         <BooleanInput source="is_completed" label="Completed?" allowEmpty />
-        <DateInput source="created_at" label="Created At" allowEmpty />
     </Filter>
 );
 
