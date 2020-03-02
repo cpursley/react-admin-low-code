@@ -1,0 +1,69 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres:latest
+    restart: on-failure
+    environment:
+        POSTGRES_USER: ${ADMIN_DB_USER}
+        POSTGRES_PASSWORD: ${ADMIN_DB_PASS}
+        POSTGRES_DB: ${ADMIN_DB_NAME}
+  flyway:
+    image: flyway/flyway:latest
+    command: -url=jdbc:postgresql://${DB_HOSTNAME}:${DB_PORT}/${ADMIN_DB_NAME} -user=${ADMIN_DB_USER} -password=${ADMIN_DB_PASS} -mixed=true -connectRetries=60 migrate
+    volumes:
+      - ./migrations/sql:/flyway/sql
+    depends_on:
+      - postgres
+    restart: on-failure
+  pgtap:
+    image: hbpmip/pgtap:1.0.0-3
+    environment:
+      DATABASE: ${ADMIN_DB_NAME}
+      HOST: ${DB_HOSTNAME}
+      PORT: ${DB_PORT}
+      USER: ${ADMIN_DB_USER}
+      PASSWORD: ${ADMIN_DB_PASS}
+      VERBOSE: 0
+      INSTALL: 1
+    volumes:
+      - ./tests/sql:/test
+    depends_on:
+      - postgres
+    restart: on-failure
+  graphql-engine:
+    image: hasura/graphql-engine:v1.1.0
+    depends_on:
+      - postgres
+      - flyway
+    ports:
+    - ${HASURA_EXTERNAL_PORT}:${HASURA_INTERNAL_PORT}
+    restart: always
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://${HASURA_DB_USER}:${HASURA_DB_PASS}@${DB_HOSTNAME}:${DB_PORT}/${HASURA_DB_NAME}
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_ADMIN_SECRET}
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: ${HASURA_UNAUTHORIZED_ROLE}
+      HASURA_GRAPHQL_LOG_LEVEL: warn
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: query-log
+    volumes:
+      - ./../../migrations/hasura:/hasura-migrations
+  graphql-migrations:
+    image: dvasdekis/hasura-cli-docker:latest
+    depends_on:
+      - graphql-engine
+    restart: on-failure
+    command: metadata apply --endpoint "http://graphql-engine:${HASURA_INTERNAL_PORT}" --admin-secret ${HASURA_ADMIN_SECRET} --project migrations
+    volumes:
+      - ./migrations/hasura:/hasuracli/migrations
+  ra-webserver:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: prod
+    ports:
+      - 8080:80
+    restart: on-failure
+
+
+
+
