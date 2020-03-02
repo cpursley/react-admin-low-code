@@ -7,7 +7,7 @@ import buildHasuraProvider from 'ra-data-hasura-graphql';
 import PostIcon from '@material-ui/icons/Book';
 import UserIcon from '@material-ui/icons/Group';
 
-const uri = "https://low-code-api.herokuapp.com/v1/graphql";
+const uri = "https://localhost:8080/v1/graphql";
 
 const App = async () => {
     const hasuraDataProvider = await buildHasuraProvider({ clientOptions: { uri: uri }});
