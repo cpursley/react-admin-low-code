@@ -1,6 +1,7 @@
 
 FROM mhart/alpine-node:latest AS builder
 COPY . .
+RUN npm install
 RUN yarn run build
 
 FROM mhart/alpine-node as prod
