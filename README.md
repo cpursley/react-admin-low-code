@@ -18,6 +18,9 @@ The containers that get run are:
 
 Ideally there'd be a container that runs frontend tests for the ra-webserver instance. But I am a backend guy and I don't know how they work.
 
+I quite like this one-liner for killing and recreating everything:
+`docker-compose down;docker volume rm $(docker volume ls -q); docker system prune --volumes -f;docker-compose up -d --build --force-recreate`
+
 ### Webserver only:
 
 To run just the webserver locally, you can run:
