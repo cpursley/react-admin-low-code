@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   postgres:
-    image: postgres:latest
+    image: postgres:11
     restart: on-failure
     environment:
         POSTGRES_USER: ${ADMIN_DB_USER}
@@ -31,7 +31,7 @@ services:
       - postgres
     restart: on-failure
   graphql-engine:
-    image: hasura/graphql-engine:v1.1.0
+    image: hasura/graphql-engine:latest
     depends_on:
       - postgres
       - flyway
@@ -45,8 +45,6 @@ services:
       HASURA_GRAPHQL_UNAUTHORIZED_ROLE: ${HASURA_UNAUTHORIZED_ROLE}
       HASURA_GRAPHQL_LOG_LEVEL: warn
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: query-log
-    volumes:
-      - ./../../migrations/hasura:/hasura-migrations
   graphql-migrations:
     image: dvasdekis/hasura-cli-docker:latest
     depends_on:
