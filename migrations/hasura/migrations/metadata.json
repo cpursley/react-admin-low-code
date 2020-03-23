@@ -58,7 +58,8 @@
                   }
                 }
               ]
-            }
+            },
+            "allow_aggregations": true
           }
         }
       ],
@@ -118,7 +119,8 @@
               "id",
               "name"
             ],
-            "filter": {}
+            "filter": {},
+            "allow_aggregations": true
           }
         }
       ],

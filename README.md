@@ -8,6 +8,8 @@ In the project directory, you can run:
 
 ### Full stack: `docker-compose up -d --build --force-recreate`
 
+[![CircleCI](https://circleci.com/gh/dvasdekis/react-admin-low-code.svg?style=svg)](https://circleci.com/gh/dvasdekis/react-admin-low-code)
+
 The containers that get run are:
  - Hasura (graphql-engine) - Creates a Hasura instance on port 8081
  - Webserver (ra-webserver) - Creates the yarn-started webserver on an Apline Linux instance

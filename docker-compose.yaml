@@ -28,7 +28,7 @@ services:
     volumes:
       - ./tests/sql:/test
     depends_on:
-      - postgres
+      - flyway
     restart: on-failure
   graphql-engine:
     image: hasura/graphql-engine:latest
