@@ -8,8 +8,8 @@ jobs:
       # Run all images that form our ongoing infrastructure
       - run: docker-compose up -d --quiet-pull --build postgres graphql-engine ra-webserver
       # Run flyway without -d (attached) so that it blocks pgtap
-      - run: docker-compose -f docker-compose-circleci.yaml up --quiet-pull --exit-code-from flyway --build flyway
-      - run: docker-compose -f docker-compose-circleci.yaml up --quiet-pull --exit-code-from pgtap --build pgtap
+      - run: docker-compose up --quiet-pull --exit-code-from flyway --build flyway
+      - run: docker-compose up --quiet-pull --exit-code-from pgtap --build pgtap
       # Run our migrations for Hasura here so that it blocks whatever we use to API test eventually
-      - run: docker-compose -f docker-compose-circleci.yaml up --quiet-pull --exit-code-from graphql-migrations --build graphql-migrations
+      - run: docker-compose up --quiet-pull --exit-code-from graphql-migrations --build graphql-migrations
       # Our API test runner can go here eventually:

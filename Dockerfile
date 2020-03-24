@@ -1,13 +1,13 @@
 FROM node:lts-slim AS node_modules
 COPY package.json .
-RUN npm install
+RUN npm install --quiet
 
 FROM node:lts-slim AS builder
 COPY package.json .
 COPY --from=node_modules /node_modules /node_modules
 COPY /src /src
 COPY /public /public
-RUN npm run-script build
+RUN npm run-script build --quiet
 
 FROM node:lts-slim as prod
 RUN yarn global add serve
