@@ -2,10 +2,17 @@
 
 CREATE TABLE public.users (
 id text not null primary key,
-name text,
+email text not null unique,
 created_at timestamp with time zone not null default now(),
 last_seen timestamp with time zone
 );
+insert into public.users(id, email)
+SELECT cast('jtbFEMQoW5fYOkyBra2m29HEfPw2' as varchar(100)) as id,
+       cast('test@example.com' as varchar(100)) as email UNION ALL
+SELECT cast('jwKVFTH7zAeChTdwXwO7xCWc9aE3' as varchar(100)) as id,
+       cast('test2@example.com' as varchar(100)) as email;
+
+
 CREATE TABLE public.todos (
 id bigserial not null primary key,
 title text,
@@ -14,6 +21,16 @@ is_public boolean default false,
 created_at timestamp with time zone not null default now(),
 user_id text not null references public.users(id)
 );
+INSERT INTO public.todos(title, is_completed, is_public, user_id)
+SELECT 'todo by test@example.com' as title, false as is_completed, false as is_public,
+       'jtbFEMQoW5fYOkyBra2m29HEfPw2' as user_id UNION ALL
+SELECT 'todo by test2@example.com' as title, false as is_completed, false as is_public,
+       'jwKVFTH7zAeChTdwXwO7xCWc9aE3' as user_id UNION ALL
+SELECT 'public todo by test@example.com' as title, false as is_completed, true as is_public,
+       'jtbFEMQoW5fYOkyBra2m29HEfPw2' as user_id UNION ALL
+SELECT 'public todo by test2@example.com' as title, false as is_completed, true as is_public,
+       'jwKVFTH7zAeChTdwXwO7xCWc9aE3' as user_id;
+
 
 /* SET POSTGRES PERMISISONS FOR TODOS APP */
 CREATE USER hasurauser WITH LOGIN;
