@@ -1,6 +1,5 @@
---These are some gimmick tests. For effective use, I rely heavily on prepared statements with results_eq().
-
-
+--These are some gimmick tests.
+-- For effective use, I rely heavily on prepared statements with results_eq().
 -- Start a transaction
 BEGIN;
 
