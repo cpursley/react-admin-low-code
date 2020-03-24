@@ -25,7 +25,7 @@ export const UserList = props => (
     <List filters={<UserFilter />} bulkActionButtons={false} {...props}>
         <Datagrid rowClick="show">
             <TextField source="id" />
-            <TextField source="name" />
+            <TextField source="email" />
             <DateField source="created_at" label="Created At" />
         </Datagrid>
     </List>
@@ -46,7 +46,7 @@ export const UserShow = (props) => (
         <TabbedShowLayout>
             <Tab label="summary">
                 <TextField source="id" />
-                <TextField source="name" />
+                <TextField source="email" />
                 <DateField label="Created At" source="created_at" />
             </Tab>
             <Tab label="todos" path="todos">

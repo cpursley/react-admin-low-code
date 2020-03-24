@@ -1,6 +1,6 @@
 FROM node:lts-slim AS node_modules
 COPY package.json .
-RUN npm install --quiet
+RUN npm install --silent
 
 FROM node:lts-slim AS builder
 COPY package.json .
