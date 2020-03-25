@@ -8,25 +8,6 @@
       },
       "select_permissions": [
         {
-          "role": "anonymous",
-          "permission": {
-            "columns": [
-              "is_completed",
-              "is_public",
-              "id",
-              "title",
-              "user_id",
-              "created_at"
-            ],
-            "filter": {
-              "is_public": {
-                "_eq": true
-              }
-            },
-            "allow_aggregations": true
-          }
-        },
-        {
           "role": "user",
           "permission": {
             "columns": [
@@ -70,23 +51,6 @@
         "name": "users"
       },
       "select_permissions": [
-        {
-          "role": "anonymous",
-          "permission": {
-            "columns": [
-              "id",
-              "email",
-              "created_at",
-              "last_seen"
-            ],
-            "filter": {
-              "id": {
-                "_eq": "0"
-              }
-            },
-            "allow_aggregations": true
-          }
-        },
         {
           "role": "user",
           "permission": {

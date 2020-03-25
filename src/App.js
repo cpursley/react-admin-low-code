@@ -30,7 +30,7 @@ const authProvider = FirebaseAuthProvider(firebaseConfig, firebaseOptions);
 
 // Define main App
 const App = () => {
-  const [token, setToken] = useState(undefined);
+  const [token, setToken] = useState(0);
   useEffect(() => {
     authProvider.getJWTToken().then(function(JWT) {
       setToken(JWT);
