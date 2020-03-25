@@ -3,16 +3,16 @@
 // and is committed to Firebase with console `firebase deploy --only functions`
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
-const { Pool } = require('pg');
+// const { Pool } = require('pg');
 admin.initializeApp(functions.config().firebase);
-
-const pool = new Pool({
-  user: functions.config().database.user,
-  host: functions.config().database.ip,
-  database: functions.config().database.dbname,
-  password: functions.config().database.password,
-  port: functions.config().database.port,
-});
+//
+// const pool = new Pool({
+//   user: functions.config().database.user,
+//   host: functions.config().database.ip,
+//   database: functions.config().database.dbname,
+//   password: functions.config().database.password,
+//   port: functions.config().database.port,
+// });
 
 
 // On sign up.
@@ -50,8 +50,5 @@ exports.processSignUp = functions.auth.user().onCreate(user => {
       // Set the refresh time to the current UTC timestamp.
       // This will be captured on the client to force a token refresh.
       return metadataRef.set({ refreshTime: new Date().getTime() });
-    }).then
-    .catch(error => {
-      console.log(error);
-    });
+        });
 });

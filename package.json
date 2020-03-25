@@ -3,13 +3,18 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-plugin-flowtype": "^4.7.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "firebase": "^7.9.x",
     "prop-types": "^15.7.2",
     "ra-data-hasura": "0.0.8",
-    "react": "^16.13.1",
-    "react-admin": "^3.1.2",
+    "react": "16.9.0",
+    "react-admin": "3.3.3",
     "react-admin-firebase": "^3.1.4",
-    "react-dom": "^16.12.0",
+    "react-dom": "16.9.0",
     "react-scripts": "^3.4.1"
   },
   "scripts": {
@@ -32,5 +37,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.1"
   }
 }

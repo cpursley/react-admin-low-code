@@ -11,12 +11,12 @@
           "role": "anonymous",
           "permission": {
             "columns": [
-              "id",
-              "title",
               "is_completed",
               "is_public",
-              "created_at",
-              "user_id"
+              "id",
+              "title",
+              "user_id",
+              "created_at"
             ],
             "filter": {
               "is_public": {
@@ -79,7 +79,11 @@
               "created_at",
               "last_seen"
             ],
-            "filter": {},
+            "filter": {
+              "id": {
+                "_eq": "0"
+              }
+            },
             "allow_aggregations": true
           }
         },

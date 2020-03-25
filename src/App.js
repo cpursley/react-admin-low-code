@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {fetchUtils, Admin, Resource} from 'react-admin';
 import {TodoCreate, TodoEdit, TodoList} from './todos';
 import {UserList, UserShow} from './users';
@@ -28,25 +28,30 @@ const firebaseOptions = {
 
 // Define Hasura data provider
 const hasuraUri = "http://localhost:8081";
-
+const authProvider = FirebaseAuthProvider(firebaseConfig, firebaseOptions);
 
 // Define main App
 const App = async () => {
-    const authProvider = FirebaseAuthProvider(firebaseConfig, firebaseOptions);
-    //let firebaseJWT = await authProvider.getJWTToken();
+    const [token, setToken] = useState(undefined);
+    useEffect(() => {
+      authProvider.getJWTToken().then(function (JWT) {
+        setToken(JWT)
+      })
+    });
     const httpClient = (url, options = {}) => {
       if (!options.headers) {
           options.headers = new Headers({ Accept: 'application/json' });
       }
       // add your own headers here
-      authProvider.getJWTToken().then(function (JWT) {
-          options.headers.set('Authorization', `Bearer ${JWT}`)});
+      if(token) {
+         options.headers.set('Authorization', `Bearer ${token}`);
+      }
       return fetchUtils.fetchJson(url, options);
     };
     const dataProvider = hasuraDataProvider(hasuraUri, httpClient);
 
 
-    return () => (
+    return !token ? <p>Loading token</p> : (
         <Admin
             dataProvider={dataProvider}
             authProvider={authProvider}
@@ -54,14 +59,12 @@ const App = async () => {
         >
             <Resource
                 name="todos"
-                //icon={PostIcon}
                 list={TodoList}
                 edit={TodoEdit}
                 create={TodoCreate}
             />
             <Resource
                 name="users"
-                //icon={UserIcon}
                 list={UserList}
                 show={UserShow}
             />

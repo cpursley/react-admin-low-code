@@ -6,7 +6,7 @@ This is an example [react-admin](https://marmelab.com/react-admin/) application 
 
 ## Available Scripts
 
-In the project directory, you can run: `docker-compose up --quiet-pull --force-recreate --build`
+In the project directory, you can run: `docker-compose up --quiet-pull --renew-anon-volumes --build`
 
 It will take more time to run the first time, as Docker installs node_modules in a temporary container.
 
