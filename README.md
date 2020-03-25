@@ -6,24 +6,19 @@ This is an example [react-admin](https://marmelab.com/react-admin/) application 
 
 ## Available Scripts
 
-In the project directory, you can run:
-
-### Full stack: `docker-compose up --quiet-pull --force-recreate --build`
+In the project directory, you can run: `docker-compose up --quiet-pull --renew-anon-volumes --build`
 
 It will take more time to run the first time, as Docker installs node_modules in a temporary container.
 
 The containers that get started are:
+ - Webserver (ra-webserver) - Creates the npm-built webserver on port 8080
  - Hasura (graphql-engine) - Creates a Hasura instance on port 8081
- - Webserver (ra-webserver) - Creates the yarn-started webserver on an Apline Linux instance
  - Postgres (postgres) - Database instance
  - Flyway (flyway) - Migrates (runs starting SQL) the Postgres container to the state described in your SQL files in `./migrations/sql`
  - graphql-migrations - Migrates (sets initial config) the Hasura container to the state described in your metadata.json file in `./migrations/hasura`
  - PGTap - Tests the database instance against PGTap SQL as written in `./tests/sql`
 
 Ideally there'd be a container that runs frontend tests for the ra-webserver instance. But I am a backend guy and I don't know how they work.
-
-I quite like this one-liner for killing and recreating everything:
-`docker-compose down;docker volume rm $(docker volume ls -q); docker system prune --volumes -f;docker-compose up -d --build --force-recreate`
 
 ### Webserver only:
 

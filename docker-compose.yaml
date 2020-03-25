@@ -42,9 +42,11 @@ services:
       HASURA_GRAPHQL_DATABASE_URL: postgres://${HASURA_DB_USER}:${HASURA_DB_PASS}@${DB_HOSTNAME}:${DB_PORT}/${HASURA_DB_NAME}
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
       HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_ADMIN_SECRET}
-      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: ${HASURA_UNAUTHORIZED_ROLE}
-      HASURA_GRAPHQL_LOG_LEVEL: warn
-      HASURA_GRAPHQL_ENABLED_LOG_TYPES: query-log
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: "anonymous"
+      HASURA_GRAPHQL_JWT_SECRET: '{"type":"RS256","jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com", "audience": "react-admin-low-code", "issuer": "https://securetoken.google.com/react-admin-low-code"}'
+      HASURA_GRAPHQL_LOG_LEVEL: debug
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_CORS_DOMAIN: "*"
   graphql-migrations:
     image: dvasdekis/hasura-cli-docker:latest
     depends_on:
