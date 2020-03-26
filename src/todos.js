@@ -21,8 +21,8 @@ import {
 const TodoFilter = (props) => (
     <Filter {...props}>
         <TextInput label="Search by Title" source="title" alwaysOn />
-        <ReferenceInput label="User" source="user_id" reference="users" allowEmpty>
-            <SelectInput optionText="name" />
+        <ReferenceInput label="User" source="user_id" reference="email" allowEmpty>
+            <SelectInput optionText="email" />
         </ReferenceInput>
         <BooleanInput source="is_completed" label="Completed?" allowEmpty />
     </Filter>
@@ -34,7 +34,7 @@ export const TodoList = props => (
             <TextField source="id" label="Todo Id" />
             <TextField source="title" />
             <ReferenceField source="user_id" reference="users">
-                <TextField source="name" />
+                <TextField source="email" />
             </ReferenceField>
             <BooleanField source="is_completed" label="Completed?" />
             <DateField source="created_at" />
@@ -57,7 +57,7 @@ export const TodoEdit = props => (
         <SimpleForm>
             <TextInput disabled source="id" label="Todo Id" />
             <ReferenceInput label="User" source="user_id" reference="users" allowEmpty>
-                <SelectInput optionText="name" />
+                <SelectInput optionText="email" />
             </ReferenceInput>
             <TextInput source="title" />
             <BooleanInput source="is_completed" label="Is Completed?"/>
@@ -69,7 +69,7 @@ export const TodoCreate = props => (
     <Create {...props}>
         <SimpleForm>
             <ReferenceInput source="user_id" reference="users">
-                <SelectInput optionText="name" />
+                <SelectInput optionText="email" />
             </ReferenceInput>
             <TextInput source="title" />
             <BooleanInput source="is_completed" label="Is Completed?"/>

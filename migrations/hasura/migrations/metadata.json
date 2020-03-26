@@ -6,60 +6,41 @@
         "schema": "public",
         "name": "todos"
       },
-      "insert_permissions": [
-        {
-          "role": "anonymous",
-          "permission": {
-            "check": {},
-            "columns": [
-              "is_completed",
-              "is_public",
-              "id",
-              "title",
-              "user_id",
-              "created_at"
-            ]
-          }
-        }
-      ],
       "select_permissions": [
         {
-          "role": "anonymous",
+          "role": "user",
           "permission": {
             "columns": [
-              "is_completed",
-              "is_public",
               "id",
               "title",
-              "user_id",
-              "created_at"
+              "is_completed",
+              "is_public",
+              "created_at",
+              "user_id"
             ],
-            "filter": {},
+            "filter": {
+              "user_id": {
+                "_eq": "X-Hasura-User-Id"
+              }
+            },
             "allow_aggregations": true
           }
         }
       ],
       "update_permissions": [
         {
-          "role": "anonymous",
+          "role": "user",
           "permission": {
             "columns": [
               "is_completed",
               "is_public",
-              "id",
-              "title",
-              "user_id",
-              "created_at"
+              "title"
             ],
-            "filter": {}
-          }
-        }
-      ],
-      "delete_permissions": [
-        {
-          "role": "anonymous",
-          "permission": {
-            "filter": {}
+            "filter": {
+              "user_id": {
+                "_eq": "X-Hasura-User-Id"
+              }
+            }
           }
         }
       ]
@@ -69,27 +50,13 @@
         "schema": "public",
         "name": "users"
       },
-      "insert_permissions": [
-        {
-          "role": "anonymous",
-          "permission": {
-            "check": {},
-            "columns": [
-              "id",
-              "email",
-              "created_at",
-              "last_seen"
-            ]
-          }
-        }
-      ],
       "select_permissions": [
         {
-          "role": "anonymous",
+          "role": "user",
           "permission": {
             "columns": [
-              "email",
               "id",
+              "email",
               "created_at",
               "last_seen"
             ],
@@ -100,23 +67,16 @@
       ],
       "update_permissions": [
         {
-          "role": "anonymous",
+          "role": "user",
           "permission": {
             "columns": [
-              "email",
-              "id",
-              "created_at",
-              "last_seen"
+              "email"
             ],
-            "filter": {}
-          }
-        }
-      ],
-      "delete_permissions": [
-        {
-          "role": "anonymous",
-          "permission": {
-            "filter": {}
+            "filter": {
+              "id": {
+                "_eq": "X-Hasura-User-Id"
+              }
+            }
           }
         }
       ]
