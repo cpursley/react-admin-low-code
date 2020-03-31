@@ -5,7 +5,7 @@ import { UserList, UserShow } from "./users";
 import hasuraDataProvider from "ra-data-hasura";
 //import PostIcon from '@material-ui/icons/Book';
 //import UserIcon from '@material-ui/icons/Group';
-import { FirebaseAuthProvider } from "react-admin-firebase";
+import { FirebaseAuthProvider } from "react-admin-firebase-jwt2";
 
 // Define Firebase auth provider
 const firebaseConfig = {
@@ -37,6 +37,8 @@ const dataProvider = hasuraDataProvider(hasuraUri, httpClient);
 
 // Define main App
 const App = () => {
+  // Below is only valid AFTER the AuthProvider returns
+  // const JWT = Array.from(authProvider)[0]['user']['xa'];
   return (
     <Admin
       dataProvider={dataProvider}
