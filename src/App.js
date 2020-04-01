@@ -23,17 +23,20 @@ const firebaseOptions = {
   // Authentication persistence, defaults to 'session', options are 'session' | 'local' | 'none'
   persistence: "local"
 };
-const authProvider = FirebaseAuthProvider(firebaseConfig, firebaseOptions);
 
-// Define Hasura data provider
-const hasuraUri = "http://localhost:8081";
-const JWT = authProvider.getJWTToken().then(function (JWT) {return JWT});
+// This
+const fbAuthProvider = FirebaseAuthProvider(firebaseConfig, firebaseOptions);
+
 const httpClient = (url, options = {}) => {
-      options.headers = new Headers({ Accept: 'application/json' });
+    fbAuthProvider.getJWTToken().then(function (JWT){
+      if (!options.headers) {
+          options.headers = new Headers({ Accept: 'application/json' });
+      }
+      // add your own headers here
       options.headers.set('Authorization', `Bearer ${JWT}`);
-  return fetchUtils.fetchJson(url, options)
-};
-const dataProvider = hasuraDataProvider(hasuraUri, httpClient);
+      return fetchUtils.fetchJson(url, options);
+    })};
+const dataProvider = hasuraDataProvider('http://localhost:8081', httpClient);
 
 // Define main App
 const App = () => {
@@ -42,7 +45,7 @@ const App = () => {
   return (
     <Admin
       dataProvider={dataProvider}
-      authProvider={authProvider}
+      authProvider={fbAuthProvider}
     >
       <Resource
         name="todos"
