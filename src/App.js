@@ -5,7 +5,7 @@ import { UserList, UserShow } from "./users";
 import hasuraDataProvider from "ra-data-hasura";
 //import PostIcon from '@material-ui/icons/Book';
 //import UserIcon from '@material-ui/icons/Group';
-import { FirebaseAuthProvider } from "react-admin-firebase-jwt2";
+import { FirebaseAuthProvider } from "react-admin-firebase";
 
 // Define Firebase auth provider
 const firebaseConfig = {
