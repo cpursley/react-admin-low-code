@@ -24,9 +24,10 @@ const firebaseOptions = {
   persistence: "local"
 };
 
-// This
+// This defines the AuthProvider first
 const fbAuthProvider = FirebaseAuthProvider(firebaseConfig, firebaseOptions);
 
+// Create a client for Hasura with the right headers
 const httpClient = (url, options = {}) => {
     return fbAuthProvider.getJWTToken().then(function (JWT){
       if (!options.headers) {
@@ -37,12 +38,12 @@ const httpClient = (url, options = {}) => {
       return fetchUtils.fetchJson(url, options);
     });
     };
+
+// Define the dataprovider
 const dataProvider = hasuraDataProvider('http://localhost:8081', httpClient);
 
 // Define main App
 const App = () => {
-  // Below is only valid AFTER the AuthProvider returns
-  // const JWT = Array.from(authProvider)[0]['user']['xa'];
   return (
     <Admin
       dataProvider={dataProvider}
