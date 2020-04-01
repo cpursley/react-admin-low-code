@@ -28,14 +28,15 @@ const firebaseOptions = {
 const fbAuthProvider = FirebaseAuthProvider(firebaseConfig, firebaseOptions);
 
 const httpClient = (url, options = {}) => {
-    fbAuthProvider.getJWTToken().then(function (JWT){
+    return fbAuthProvider.getJWTToken().then(function (JWT){
       if (!options.headers) {
           options.headers = new Headers({ Accept: 'application/json' });
       }
       // add your own headers here
       options.headers.set('Authorization', `Bearer ${JWT}`);
       return fetchUtils.fetchJson(url, options);
-    })};
+    });
+    };
 const dataProvider = hasuraDataProvider('http://localhost:8081', httpClient);
 
 // Define main App
