@@ -4,7 +4,9 @@ This is an example [react-admin](https://marmelab.com/react-admin/) application 
 
 ## Alternatives
 
-[@dvasdekis](https://github.com/dvasdekis) has taken this concept a step further and integrated Docker Compose for development, Firebase for authentication and Flyway for database migrations. Check it out here: (react-admin-hasura-firebase)[https://github.com/dvasdekis/react-admin-hasura-firebase)
+[@dvasdekis](https://github.com/dvasdekis) has taken this concept a step further and integrated Docker Compose for development, Firebase for authentication and Flyway for database migrations.
+
+Check it out here: [react-admin-hasura-firebase](https://github.com/dvasdekis/react-admin-hasura-firebase)
 
 ## Available Scripts
 
