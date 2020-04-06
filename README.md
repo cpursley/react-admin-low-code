@@ -2,6 +2,10 @@
 
 This is an example [react-admin](https://marmelab.com/react-admin/) application (configuration based CRUD admin UI builder) demonstrating how to use the [ra-data-hasura-graphql](https://github.com/Steams/ra-data-hasura-graphql) data provider with a [Hasura](https://hasura.io/) (automatic GraphQL API backend on top of PostgreSQL). By combining these two technologies, you can build an entire back office admin suite in a matter of hours. 
 
+## Alternatives
+
+[@dvasdekis](https://github.com/dvasdekis) has taken this concept a step further and integrated Docker Compose for development, Firebase for authentication and Flyway for database migrations. Check it out here: (react-admin-hasura-firebase)[https://github.com/dvasdekis/react-admin-hasura-firebase)
+
 ## Available Scripts
 
 In the project directory, you can run:
