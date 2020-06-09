@@ -15,13 +15,13 @@ import {
     ListButton
 } from 'react-admin';
 
-const UserFilter = (props) => (
+const UserFilter = (props: object) => (
     <Filter {...props}>
         <TextInput label="Search by Name" source="name" alwaysOn />
     </Filter>
 );
 
-export const UserList = props => (
+export const UserList = (props: object) => (
     <List filters={<UserFilter />} bulkActionButtons={false} {...props}>
         <Datagrid rowClick="show">
             <TextField source="id" />
@@ -31,17 +31,17 @@ export const UserList = props => (
     </List>
 );
 
-const UserTitle = ({ record }) => {
+const UserTitle = ({ record }: { record?: {name: string}}) => {
     return <span>User: {record ? `${record.name}` : ''}</span>;
 };
 
-const UserShowActions = ({ basePath, data }) => (
+const UserShowActions = ({ basePath, data }: { basePath?: string, data?: object}) => (
     <TopToolbar>
         <ListButton basePath={basePath} record={data} label="Back" />
     </TopToolbar>
 );
 
-export const UserShow = (props) => (
+export const UserShow = (props: object) => (
     <Show title={<UserTitle />} actions={<UserShowActions />} {...props}>
         <TabbedShowLayout>
             <Tab label="summary">
