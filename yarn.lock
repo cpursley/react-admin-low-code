@@ -5962,6 +5962,10 @@ killable@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"
 
+kind-of@>=6.0.3, kind-of@^6.0.0, kind-of@^6.0.2:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
+
 kind-of@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-2.0.1.tgz#018ec7a4ce7e3a86cb9141be519d24c8faa981b5"
@@ -5983,10 +5987,6 @@ kind-of@^4.0.0:
 kind-of@^5.0.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-5.1.0.tgz#729c91e2d857b7a419a1f9aa65685c4c33f5845d"
-
-kind-of@^6.0.0, kind-of@^6.0.2:
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
 
 kleur@^3.0.3:
   version "3.0.3"
@@ -6348,7 +6348,7 @@ minimist@0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
 
-minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
+minimist@>=1.2.3, minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
 
@@ -7910,7 +7910,7 @@ querystringify@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
 
-ra-core@^3.1.2, ra-core@^3.6.0:
+ra-core@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.6.0.tgz#f264c9cdc4655c99841bd2d5b783e4a3d98009b9"
   dependencies:
@@ -7935,28 +7935,30 @@ ra-data-graphql@^3.0.2:
     lodash "~4.17.5"
     pluralize "~7.0.0"
 
-ra-data-hasura-graphql@0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/ra-data-hasura-graphql/-/ra-data-hasura-graphql-0.1.8.tgz#534c8cda7f095875b5d38b63ed0450731f750ece"
+ra-data-hasura-graphql@^0.1.10:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/ra-data-hasura-graphql/-/ra-data-hasura-graphql-0.1.10.tgz#8a0c4cd9d7932a9fcc7089d5e5580b2be8b9f61e"
   dependencies:
     graphql-ast-types-browser "~1.0.2"
+    kind-of ">=6.0.3"
     lodash "~4.17.5"
+    minimist ">=1.2.3"
     ra-data-graphql "^3.0.2"
 
-ra-i18n-polyglot@^3.1.2:
+ra-i18n-polyglot@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.6.0.tgz#352bf93ee37b3c132de4a729ce99fdf19222d545"
   dependencies:
     node-polyglot "^2.2.2"
     ra-core "^3.6.0"
 
-ra-language-english@^3.1.0:
+ra-language-english@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-3.6.0.tgz#94f8a6c9889674651231aae1881c4d80156bbd07"
   dependencies:
     ra-core "^3.6.0"
 
-ra-ui-materialui@^3.1.2:
+ra-ui-materialui@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.6.0.tgz#442b0542fbf4470e9bf45e8856d1248fca4f6b44"
   dependencies:
@@ -8006,9 +8008,9 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-admin@3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/react-admin/-/react-admin-3.1.2.tgz#36e771f8fcda36e45f6852eb879f7372b62fcf71"
+react-admin@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/react-admin/-/react-admin-3.6.0.tgz#c6ad0eab167fad30495a761f54a8f88754e6a883"
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
@@ -8016,10 +8018,10 @@ react-admin@3.1.2:
     connected-react-router "^6.5.2"
     final-form "^4.18.5"
     final-form-arrays "^3.0.1"
-    ra-core "^3.1.2"
-    ra-i18n-polyglot "^3.1.2"
-    ra-language-english "^3.1.0"
-    ra-ui-materialui "^3.1.2"
+    ra-core "^3.6.0"
+    ra-i18n-polyglot "^3.6.0"
+    ra-language-english "^3.6.0"
+    ra-ui-materialui "^3.6.0"
     react-final-form "^6.3.3"
     react-final-form-arrays "^3.1.1"
     react-redux "^7.1.0"
