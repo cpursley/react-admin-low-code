@@ -4,7 +4,7 @@ import getApp from './get-app'
 import * as serviceWorker from './serviceWorker';
 import ReactDOM from 'react-dom'
 
-getApp().then((App: any) =>
+getApp().then((App: React.FC) =>
   ReactDOM.render(
     <React.StrictMode>
       <App />
