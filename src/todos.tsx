@@ -18,7 +18,7 @@ import {
     ListButton
 } from 'react-admin';
 
-const TodoFilter = (props) => (
+const TodoFilter = (props: object) => (
     <Filter {...props}>
         <TextInput label="Search by Title" source="title" alwaysOn />
         <ReferenceInput label="User" source="user_id" reference="users" allowEmpty>
@@ -28,7 +28,7 @@ const TodoFilter = (props) => (
     </Filter>
 );
 
-export const TodoList = props => (
+export const TodoList = (props: object) => (
     <List filters={<TodoFilter />} bulkActionButtons={false} {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" label="Todo Id" />
@@ -42,17 +42,17 @@ export const TodoList = props => (
     </List>
 );
 
-const TodoTitle = ({ record }) => {
+const TodoTitle = ({ record }: { record?: {title: string}}) => {
     return <span>Todo: {record ? `${record.title}` : ''}</span>;
 };
 
-const TodoEditActions = ({ basePath, data }) => (
+const TodoEditActions = ({ basePath, data }: { basePath?: string, data?: object}) => (
     <TopToolbar>
         <ListButton basePath={basePath} record={data} label="Back" />
     </TopToolbar>
 );
 
-export const TodoEdit = props => (
+export const TodoEdit = (props: object) => (
     <Edit title={<TodoTitle />} actions={<TodoEditActions />} {...props}>
         <SimpleForm>
             <TextInput disabled source="id" label="Todo Id" />
@@ -65,7 +65,7 @@ export const TodoEdit = props => (
     </Edit>
 );
 
-export const TodoCreate = props => (
+export const TodoCreate = (props: object) => (
     <Create {...props}>
         <SimpleForm>
             <ReferenceInput source="user_id" reference="users">
