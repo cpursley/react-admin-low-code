@@ -1,5 +1,5 @@
 import React from 'react'
-import App from './App'
+import App from './app'
 import buildHasuraProvider from 'ra-data-hasura-graphql';
 
 const uri = "https://low-code-api.herokuapp.com/v1/graphql";

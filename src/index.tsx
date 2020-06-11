@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import getApp from './get-app'
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from './service-worker';
 import ReactDOM from 'react-dom'
 
 getApp().then((App: React.FC) =>
