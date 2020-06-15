@@ -8,6 +8,11 @@ This is an example [react-admin](https://marmelab.com/react-admin/) application 
 
 Check it out here: [react-admin-hasura-firebase](https://github.com/dvasdekis/react-admin-hasura-firebase)
 
+[@hgiasac](hgiasac) has also put together a very complete example with TypeScript. He's created several branches demonstrating auth with [jtw](https://github.com/hgiasac/ra-hasura-typescript-boilerplate/tree/auth-jwt) and [firebase](https://github.com/hgiasac/ra-hasura-typescript-boilerplate/tree/auth-firebase) as well as a backend that includes Hasura Actions and Events and auth:
+
+- [ra-hasura-typescript-boilerplate](https://github.com/hgiasac/ra-hasura-typescript-boilerplate)
+- [hasura-typescript-boilerplate](https://github.com/hgiasac/hasura-typescript-boilerplate)
+
 ## Available Scripts
 
 In the project directory, you can run:
