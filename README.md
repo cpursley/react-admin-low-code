@@ -1,6 +1,6 @@
 # React Admin Low Code
 
-This is an example [react-admin](https://marmelab.com/react-admin/) application (configuration based CRUD admin UI builder) demonstrating how to use the [ra-data-hasura-graphql](https://github.com/Steams/ra-data-hasura-graphql) data provider with a [Hasura](https://hasura.io/) (automatic GraphQL API backend on top of PostgreSQL). By combining these two technologies, you can build an entire back office admin suite in a matter of hours.
+This is an example [react-admin](https://marmelab.com/react-admin/) application (configuration based CRUD admin UI builder) demonstrating how to use the [ra-data-hasura](https://github.com/hasura/ra-data-hasura) data provider with a [Hasura](https://hasura.io/) (automatic GraphQL API backend on top of PostgreSQL). By combining these two technologies, you can build an entire back office admin suite in a matter of hours.
 
 **NOTE** the [ra-data-hasura-graphql](https://github.com/Steams/ra-data-hasura-graphql) repository is now depreciated and has been migrated to the offical Hasura organization. Hasura has adopted and now maintains this library. Going forward, use this library: https://github.com/hasura/ra-data-hasura
 
