@@ -21,6 +21,10 @@ Check it out here: [react-admin-hasura-firebase](https://github.com/dvasdekis/re
 
 In the project directory, you can run:
 
+### `yarn install`
+
+Install dependencies.
+
 ### `yarn start`
 
 Runs the app in the development mode.<br />
