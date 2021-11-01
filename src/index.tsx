@@ -3,11 +3,12 @@ import './index.css';
 import getApp from './get-app'
 import * as serviceWorker from './service-worker';
 import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom';
 
 getApp().then((App: React.FC) =>
   ReactDOM.render(
     <React.StrictMode>
-      <App />
+        <BrowserRouter><App/></BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
   )
