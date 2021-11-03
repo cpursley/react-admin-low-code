@@ -20,6 +20,6 @@
     "isolatedModules": true
   },
   "include": [
-    "src"
+    "src", "src/ra-data-hasura.d.ts"
   ]
 }
